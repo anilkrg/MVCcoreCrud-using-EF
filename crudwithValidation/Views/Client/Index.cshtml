@@ -1,0 +1,33 @@
+﻿@model IEnumerable<crudwithValidation.Models.Client>
+@{
+}
+<a asp-action="Create" asp-controller="Client" class="btn btn-outline-danger">Create</a>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>ADDRESS</th>
+            <th>CITY</th>
+            <th>MOBILE</th>
+        </tr>
+    </thead>
+    @foreach (var cli in Model)
+    {
+        <tr>
+            <td>@cli.Id</td>
+            <td>@cli.Name</td>
+            <td>@cli.Address</td>
+            <td>@cli.City</td>
+            <td>@cli.Mobile</td>
+            
+            <td>
+               <a asp-action="Edit" asp-controller="Client" asp-route-id="@cli.Id" onclick="return confirm('Are you sure to Update this Record?')">Edit</a> ||
+                <a asp-action="Delete" asp-controller="Client" asp-route-id="@cli.Id" onclick="return confirm('Are you sure to delete this Record?')">Delete</a>
+
+            </td>
+
+        </tr>
+    }
+</table>
